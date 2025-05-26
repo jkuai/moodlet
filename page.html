@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moodlet</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('background.png');
+      background-size: cover;              
+      background-repeat: no-repeat;
+      background-position: top;
+      image-rendering: pixelated;   
+      text-align: center;    
+    }
+
+    h1 {
+      margin-top: 30px;
+      color: #4B473C;
+      font-family: 'Pixelify Sans';
+      font-size: 40px;
+    }
+
+    .button {
+      font-size: 30px;
+      color: #4B473C;
+      font-family: 'Pixelify Sans';
+      background: none;
+      border: none;
+      display: block;
+      margin: 5px auto;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    .top-left-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      font-size: 20px;
+      color: #4B473C;
+      font-family: 'Pixelify Sans';
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .bounce_img {
+        width: 200px;
+        animation: bounce 1s infinite ease-in-out;
+    }
+
+    .emoji-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 320px; 
+        overflow: hidden;
+        margin: auto;
+        position: relative;
+    }
+
+    .emoji-strip {
+        display: flex;
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        width: 200px; 
+    }
+
+    .emoji-strip img {
+        width: 200px;
+        margin: 0 5px;
+        flex-shrink: 0;
+        animation: bounce 1s infinite ease-in-out;
+    }
+
+    .emoji-strip-wrapper {
+        overflow: hidden;
+        width: 200px; /* wrap exactly one emoji */
+    }
+  </style>
+    <script>
+        let scrollIndex = 0;
+        const emojiWidth = 210; // includes margin
+        const visibleCount = 1;
+        
+        function scrollEmojis(direction) {
+            const strip = document.getElementById('emojiStrip');
+            const emojis = strip.querySelectorAll('img').length;
+        
+            scrollIndex += direction;
+            //scrollIndex = Math.max(0, Math.min(scrollIndex, emojis - visibleCount));
+            
+            const offset = scrollIndex * emojiWidth * -1;
+            strip.style.transform = `translateX(${offset}px)`;
+        }
+    </script>
+</head>
+
+<body>
+  <h1>choose your current mood</h1>
+  <a href="index.html" class="top-left-button" style="text-decoration: none;">&lt;</a>
+
+  <div class="emoji-container">
+    <button class="button" onclick="scrollEmojis(-1)">&lt; </button>
+    <div class="emoji-strip-wrapper">
+        <div class="emoji-strip" id="emojiStrip">
+            <img src="happy.png" alt="happy">
+            <img src="sad.png" alt="sad">
+            <img src="tired.png" alt="tired">
+            <img src="angry.png" alt="angry">
+            <img src="eep.png" alt="eep">
+            <img src="hehe.png" alt="hehe">
+        </div>
+      </div>
+    <button class="button" onclick="scrollEmojis(1)">&gt;</button>
+  </div>
+
+  <button class="button">select</button>
+</body>
+</html>
