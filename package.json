@@ -1,0 +1,26 @@
+{
+  "name": "moodlet",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "mood"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkuai/moodlet.git"
+  },
+  "keywords": [
+    "mood"
+  ],
+  "author": "jeslyn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkuai/moodlet/issues"
+  },
+  "homepage": "https://github.com/jkuai/moodlet#readme",
+  "description": "",
+  "devDependencies": {
+    "electron": "^36.2.1"
+  }
+}
